@@ -1,0 +1,24 @@
+
+<div class="container" ng-hide="userCtrl.hideDetails">
+  <h2> Your Registered Details </h2>
+  <div class="menu-item-description col-sm-7" ng-repeat="userInfo in userCtrl.userInfo">
+  <p> First Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="menu-item-details">{{ userInfo.firstName}}</span></p>
+  <p> Last Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="menu-item-details">{{ userInfo.lastName}}</span></p>
+  <p> Phone Number &nbsp;&nbsp;&nbsp;<span class="menu-item-details">  {{ userInfo.phoneNumber}}</span></p>
+  <p> Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="menu-item-details">{{ userInfo.email}} </span></p>
+
+  </div>
+
+
+<br>
+<br>
+  <item-list ng-repeat="userItem in userCtrl.itemInfo"
+           user-item="userItem">
+  </item-list>
+
+</div>
+<div class="container" ng-show="userCtrl.hideDetails">
+  <h2 id="menu-categories-title" class="text-center">
+  Not Signed Up Yet.  <a ui-sref="public.user" href="#"> Sign up Now! </a>
+  </h2>
+</div>

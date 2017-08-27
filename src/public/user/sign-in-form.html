@@ -1,0 +1,82 @@
+<div class="container" >
+  <form class="form-horizontal"   name="regForm" novalidate ng-show="signInCtrl.showForm">
+      <div class="form-group">
+          <label for="firstName" class="col-sm-3 control-label">First Name</label>
+          <div class="col-sm-6">
+              <input type="text" name="firstName" class="form-control" ng-model="signInCtrl.user.firstName"
+               placeholder="Enter First Name"  minlength="4"
+            ng-maxlength="10" required >
+              <span
+              ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+            <font color="red">    FirstName must be at least 4 characters long </font>
+            </span>
+            <span ng-if="regForm.firstName.$error.maxlength && regForm.firstName.$touched" >
+            <font color="red">  FirstName must not be longer than 10 characters </font>
+            </span>
+          </div>
+          <div class="col-sm-3"></div>
+
+      </div>
+      <div class="form-group">
+          <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+          <div class="col-sm-6">
+              <input type="text" name="lastName" class="form-control" ng-model="signInCtrl.user.lastName" placeholder="Enter Last Name" required/>
+              <span class="textColor"
+              ng-if="( regForm.lastName.$error.required) && regForm.lastName.$touched">
+        <font color="red">    Please Enter Last Name </font>
+            </span>
+
+          </div>
+          <div class="col-sm-3"></div>
+      </div>
+      <div class="form-group">
+          <label for="lastName" class="col-sm-3 control-label">Email</label>
+          <div class="col-sm-6">
+              <input type="email" name="email" class="form-control" ng-model="signInCtrl.user.email" placeholder="Enter Email Address" required/>
+              <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+      <font color="red">     Must be a valid email address: handle@domain format </font>
+         </span>
+          </div>
+          <div class="col-sm-3"></div>
+      </div>
+      <div class="form-group">
+          <label for="lastName" class="col-sm-3 control-label">Phone Number</label>
+          <div class="col-sm-6">
+              <input type="text" name="phoneNumber" class="form-control" ng-model="signInCtrl.user.phoneNumber" placeholder="Phone ###-###-####"
+                  pattern="(\d{3})-(\d{3})-(\d{4})">
+          <span ng-if="regForm.phoneNumber.$invalid && regForm.phoneNumber.$touched">
+      <font color="red">      Phone must be in the format ###-###-####. </font>
+          </span>
+        </div>
+          <div class="col-sm-3"></div>
+      </div>
+
+      <div class="form-group">
+          <label for="lastName" class="col-sm-3 control-label">Favourite Dish</label>
+          <div class="col-sm-6">
+              <input type="text" name="fDish" class="form-control" ng-model="signInCtrl.user.fDish"
+              placeholder="Enter Favourite Dish Short Name" ng-change="signInCtrl.checkForItems(signInCtrl.user.fDish)" required/>
+
+            <span ng-show="signInCtrl.error" class="errorStyle">
+                No such menu number exists
+          </div>
+          <div class="col-sm-3"></div>
+      </div>
+
+      <input type="submit" value="Save" class="btn btn-primary col-sm-offset-3"  ng-disabled="signInCtrl.isDisabled"
+          ng-click="signInCtrl.submit(signInCtrl.user)"/>
+
+
+  </form>
+  <div  ng-show="signInCtrl.hideForm">
+    <h4 class="super">Thank You For Singing Up Your information has been saved</h4>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+   </div>
